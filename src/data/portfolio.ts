@@ -42,6 +42,34 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: "spendly",
+    title: "Spendly - AI-Powered Expense Management",
+    description: "Full-stack expense management platform with AI-driven receipt parsing and analytics",
+    technologies: ["Spring Boot", "MySQL", "PostgreSQL", "Thymeleaf", "Gemini API", "JWT", "REST", "Maven"],
+    features: [
+      "AI-powered receipt data extraction using Gemini API",
+      "Secure JWT authentication and role-based access control",
+      "Real-time expense analytics and reporting dashboards",
+      "Modular architecture with separate service layers",
+      "RESTful APIs for expense lifecycle management"
+    ],
+    link: "https://github.com/ayoub8rouine/spendly"
+  },
+  {
+    id: "student-performance",
+    title: "Student Performance Analytics Platform",
+    description: "Comprehensive data warehouse and BI solution for analyzing student performance and engagement",
+    technologies: ["Databricks", "Power BI", "SQL", "Python", "PySpark", "ETL"],
+    features: [
+      "Integrated data warehouse for academic and engagement metrics",
+      "ETL pipeline using Databricks and PySpark",
+      "Interactive Power BI dashboards for performance analysis",
+      "KPI tracking for success rates and engagement levels",
+      "Correlation analysis of performance and skill metrics"
+    ],
+    link: "https://github.com/ayoub8rouine/student-analytics"
+  },
+  {
     id: "ai-diagnosis-system",
     title: "AI-Based Medical Diagnosis System",
     description: "Comprehensive AI system for medical diagnosis using both symptom analysis and medical imaging",

@@ -15,7 +15,8 @@ export interface Project {
   description: string;
   technologies: string[];
   features: string[];
-  year: string;
+  year?: string;
+  link?: string;
 }
 
 export interface Skill {

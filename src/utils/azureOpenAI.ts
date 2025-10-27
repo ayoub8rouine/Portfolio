@@ -43,11 +43,29 @@ CORE INFORMATION:
      * Complete three-stage workflow implementation
      * Tech: Python, PyTorch, Transformers, Hugging Face
 
+   - Spendly - AI-Powered Expense Management Platform:
+     * Full-stack application with Spring Boot and MySQL
+     * AI-driven receipt parsing using Gemini API
+     * JWT authentication and role-based access
+     * Features: receipt parsing, expense lifecycle, real-time dashboards
+     * Tech: Spring Boot, MySQL/PostgreSQL, Thymeleaf, Gemini API, JWT
+   
+   - Student Performance Analysis Platform:
+     * Data Warehouse & BI project for online university
+     * Built ETL pipeline using Databricks and PySpark
+     * Analyzed success rates, dropout rates, and engagement levels
+     * Interactive Power BI dashboards for performance metrics
+     * Tech: Databricks, Power BI, SQL, Python, ETL
+
 5. Skills:
    - Languages: Arabic, French, English
    - Programming: C, C++, Python, Java, JavaScript, TypeScript, SQL, PL/SQL
-   - Frameworks: React, Node.js, Flask, PyTorch, TensorFlow, XGBoost, YOLOv5
-   - Tools: Git, GitHub, Jupyter, VS Code, Azure, MySQL, Overleaf
+   - Frameworks & Technologies: 
+     * Web: React, Node.js, Spring Boot, Flask, Thymeleaf
+     * AI/ML: PyTorch, TensorFlow, XGBoost, YOLOv5, Gemini API
+     * Data: Databricks, PySpark, Power BI, ETL
+   - Tools: Git, GitHub, Jupyter, VS Code, Azure, MySQL, PostgreSQL, Overleaf
+   - Additional: JWT Authentication, REST APIs, Data Warehousing
 
 6. Achievements:
    - Winner of ENSI 40th Anniversary Programming Contest
