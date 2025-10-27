@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 import { ChatMessage } from '../types';
-import { getChatbotResponse } from '../utils/chatbotResponses';
+import { getAzureOpenAIResponse } from '../utils/azureOpenAI';
+import './Chatbot.css';
 
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,33 +40,48 @@ const Chatbot: React.FC = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate typing delay
-    setTimeout(() => {
-      const response = getChatbotResponse(inputValue);
+    try {
+      // Get response from Azure OpenAI
+      const aiResponse = await getAzureOpenAIResponse(inputValue);
       
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        text: response.text,
+        text: aiResponse,
         isUser: false,
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, botMessage]);
-      setIsTyping(false);
+      
+      // Add common questions as suggestions
+      const suggestions = [
+        "Tell me about your projects",
+        "What are your technical skills?",
+        "What's your education background?",
+        "What's your work experience?"
+      ];
 
-      // Add suggestion buttons if available
-      if (response.suggestions) {
-        setTimeout(() => {
-          const suggestionMessage: ChatMessage = {
-            id: (Date.now() + 2).toString(),
-            text: `Quick questions: ${response.suggestions?.join(' • ')}`,
-            isUser: false,
-            timestamp: new Date()
-          };
-          setMessages(prev => [...prev, suggestionMessage]);
-        }, 500);
-      }
-    }, 1000);
+      setTimeout(() => {
+        const suggestionMessage: ChatMessage = {
+          id: (Date.now() + 2).toString(),
+          text: `Quick questions: ${suggestions.join(' • ')}`,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, suggestionMessage]);
+      }, 500);
+
+    } catch (error) {
+      const errorMessage: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        text: "I apologize, but I'm having trouble connecting. Please try again later.",
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -130,9 +146,9 @@ const Chatbot: React.FC = () => {
               <div className="flex justify-start">
                 <div className="bg-gray-100 px-3 py-2 rounded-lg rounded-bl-none">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full typing-dot-1"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full typing-dot-2"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full typing-dot-3"></div>
                   </div>
                 </div>
               </div>
@@ -154,6 +170,7 @@ const Chatbot: React.FC = () => {
               <button
                 onClick={handleSendMessage}
                 className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors"
+                aria-label="Send message"
               >
                 <Send size={16} />
               </button>
