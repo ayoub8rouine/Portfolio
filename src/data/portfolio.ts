@@ -2,11 +2,11 @@ import { Experience, Project, Skill, Award, Club } from '../types';
 
 export const personalInfo = {
   name: "Ayoub Rouine",
-  title: "AI Engineer & Full-Stack Developer",
+  title: "Software Engineering Student",
   email: "ayoub.rouin@ensi-uma.tn",
   github: "https://github.com/ayoub8rouine",
   linkedin: "https://www.linkedin.com/in/rouin-ayoub",
-  bio: "Passionate AI Engineer and competitive programmer with expertise in machine learning, computer vision, and full-stack development. Experienced in building intelligent systems and optimizing complex algorithms."
+  bio: "Final year Software Engineering student at ENSI with a growing passion for AI, full-stack development, and DevOps practices. Enthusiastically exploring the intersection of machine learning and software engineering through hands-on projects. Active in competitive programming and continuously learning modern development workflows including CI/CD pipelines and cloud technologies."
 };
 
 export const experiences: Experience[] = [
